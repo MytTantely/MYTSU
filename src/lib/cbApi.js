@@ -17,6 +17,20 @@ module.exports = class CouchbaseAPI {
         });
     }
 
+    searchByName( callback){
+        console.log('Calling Search...');
+        bucket.query(queryByName, function(err, results){
+            if(err){
+                console.log(err);
+                throw err;
+            } 
+
+            console.log('View no error');
+
+            callback(null, results);
+        });    
+    }
+
     searchByPrice(){
         // let options = { 
         //     method: 'GET',
@@ -59,6 +73,9 @@ const bucket = cluster.openBucket('mytBucket1');
 const SpatialQuery = couchbase.SpatialQuery;
 
 const query = SpatialQuery.from('location', 'byCoordinates').limit(10);
+
+const ViewQuery = couchbase.ViewQuery;
+const queryByName = ViewQuery.from('products','byName');
 
 // rp(options)
         //     .then(function (htmlString) {

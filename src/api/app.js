@@ -2,6 +2,9 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 
+const CBApi = require('../../src/lib/cbApi');
+const cbApi = new CBApi();
+
 // configure app to use bodyParser()
 // this will let us get the data from a POST
 app.use(bodyParser.urlencoded({extended:true}));
@@ -19,6 +22,40 @@ router.get('/', (req, res) => {
 // REGISTER OUR ROUTES -------------------------------
 // all of our routes will be prefixed with /api
 app.use('/api/v1', router);
+
+// BUSINESS ***
+
+// Create a business
+
+// Search a business
+
+// Delete a business
+
+// Update a business
+
+// PRODUCTS
+
+// Create a product for one company
+
+// Search a product for one company
+
+// Delete a product for one company
+
+// Update a product for one company
+
+// SEARCH
+router.route('/search/:name')
+// Search by name around an address //FIXME simple view or Full Text Search
+    .get( (req, res) => {
+        let results = cbApi.searchByName( (err, results) => {
+            res.json(results);
+        } );
+        
+    });
+// Search by name without an address
+
+// Search by price/name/ around current location
+
 
 // START THE SERVER
 // =================
