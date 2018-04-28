@@ -24,7 +24,8 @@ module.exports = class CouchbaseAPI {
         // };
         let options = { 
             method: 'GET',
-            uri: 'http://127.0.0.1:8092/mytBucket1/_design/dev_location/_spatial/byCoordinates?limit=6&stale=false&connection_timeout=60000&skip=0&full_set=',
+            // uri: 'http://127.0.0.1:8092/mytBucket1/_design/dev_location/_spatial/byCoordinates?limit=6&stale=false&connection_timeout=60000&skip=0&full_set=',
+            uri: 'http://127.0.0.1:8092/mytBucket1/_design/dev_location/_spatial/byCoordinates?start_range=[-115, 50, 0, 0]&end_range=[-110, 54, 5, null]&limit=60&stale=true&connection_timeout=60000&skip=0&full_set=',
             auth: {
                 user: 'Administrator',
                 pass: 'MTLpwd99='
