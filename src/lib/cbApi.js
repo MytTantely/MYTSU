@@ -17,8 +17,92 @@ module.exports = class CouchbaseAPI {
         });
     }
 
-    searchByName( callback){
+    upGetMatrixProductCode(productName, callback){
+        // if value there, return the value of the code
+        this.getId(MATRIX_PRODUCT_CODE_NAME, (data) => {
+            console.log(data);
+            let matrix = data.value;
+            if(matrix[productName] === null || matrix[productName] === undefined){
+                this.incProductNumber( (value) =>{
+                    matrix[productName] = value;
+                    this.upsertValue(MATRIX_PRODUCT_CODE_NAME, matrix , () => {
+                        console.log('Updated!');
+                        callback(value);
+                    });
+                });
+            }else{
+                callback(matrix[productName]);
+            }
+            console.log(data);
+        });
+        // if value not there
+            // get last max productNumber
+            // update it in DB
+            // return new productCode
+    }
+
+    //FIXME do we need to play with lock/unlock when getting and setting
+    getId(id, callback){
+        bucket.get(id, (error, data) => {
+            if(error){
+                console.log(error);
+            }
+            callback(data);
+        });
+    }
+
+    upsertValue(id, value, callback){
+        bucket.upsert(id, value, (error,data) => {
+            if(error){
+                console.log(error);
+                throw error;
+            }
+
+            callback(data); // FIXME is data always NULL
+        });
+    }
+
+    getProductNumber(callback){
+        bucket.get( MAX_PRODUCT_NUMBER, (error, data) => {
+            if(error){
+                console.log(error);
+                throw error;
+            }
+            callback(data.value);
+        });
+    }
+
+    incProductNumber(callback){
+        bucket.getAndLock(MAX_PRODUCT_NUMBER, (error, data) => {
+            let nextVal = data.value + 1;
+            bucket.unlock(MAX_PRODUCT_NUMBER,data.cas, (error, data) => {
+                if(error){
+                    console.log(error);
+                    throw error;
+                }
+                bucket.upsert(MAX_PRODUCT_NUMBER, nextVal, (error, val) => {
+                    if(error){
+                        console.log(error);
+                        throw error;
+                    }
+                    
+                    callback(nextVal);
+                });
+            });
+            
+        });
+    }
+
+    searchByName(productName, callback){
         console.log('Calling Search...');
+        let queryByName;
+        if(productName === null || productName === undefined){
+            queryByName = ViewQuery.from('products','byName');
+        }else{
+            queryByName = ViewQuery.from('products','byName').key(productName);
+        }
+        
+
         bucket.query(queryByName, function(err, results){
             if(err){
                 console.log(err);
@@ -75,7 +159,9 @@ const SpatialQuery = couchbase.SpatialQuery;
 const query = SpatialQuery.from('location', 'byCoordinates').limit(10);
 
 const ViewQuery = couchbase.ViewQuery;
-const queryByName = ViewQuery.from('products','byName');
+
+const MAX_PRODUCT_NUMBER = 'myt#productNumber';
+const MATRIX_PRODUCT_CODE_NAME = 'myt#matrix#productCode';
 
 // rp(options)
         //     .then(function (htmlString) {

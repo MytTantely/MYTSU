@@ -47,7 +47,7 @@ app.use('/api/v1', router);
 router.route('/search/:name')
 // Search by name around an address //FIXME simple view or Full Text Search
     .get( (req, res) => {
-        let results = cbApi.searchByName( (err, results) => {
+        let results = cbApi.searchByName(req.params.name, (err, results) => {
             res.json(results);
         } );
         
