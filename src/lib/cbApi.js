@@ -17,6 +17,60 @@ module.exports = class CouchbaseAPI {
         });
     }
 
+    /**
+     * Update existing products to use code
+     * - neeed to get all restaurants
+     * - for each restaurant get products
+     * - for each product call updateCodeProduct
+     * - replace the product by the one updated
+     * - save the restaurant.
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+
+
+
+
+
+
+     */
+ 
+    /**
+     * Get the Product Code from the Matrix
+     * Return the product updated
+     * @param {*} Product 
+     */
+    updateCodeProduct(product, callback){
+        this.upGetMatrixProductCode(product.name, (code) => {
+            product.code = code;
+            callback(product);
+        });        
+    }
+
     upGetMatrixProductCode(productName, callback){
         // if value there, return the value of the code
         this.getId(MATRIX_PRODUCT_CODE_NAME, (data) => {
@@ -93,6 +147,14 @@ module.exports = class CouchbaseAPI {
         });
     }
 
+    searchAllStore(){
+        bucket.query(storeQuery, (err, rows, meta) => {
+            for(let r = 0; r < rows.length; r++){
+                console.log(JSON.stringify(rows[r]));
+            }
+        });
+    }
+
     searchByName(productName, callback){
         console.log('Calling Search...');
         let queryByName;
@@ -163,6 +225,8 @@ const ViewQuery = couchbase.ViewQuery;
 const MAX_PRODUCT_NUMBER = 'myt#productNumber';
 const MATRIX_PRODUCT_CODE_NAME = 'myt#matrix#productCode';
 
+const N1qlQuery = couchbase.N1qlQuery;
+const storeQuery = N1qlQuery.fromString('select * from `mytBucket1` mb where mb.type = \'store\'');
 // rp(options)
         //     .then(function (htmlString) {
         //             // Process html...
