@@ -147,10 +147,19 @@ module.exports = class CouchbaseAPI {
         });
     }
 
-    searchAllStore(){
+    searchAllStore(   ){                     
         bucket.query(storeQuery, (err, rows, meta) => {
             for(let r = 0; r < rows.length; r++){
-                console.log(JSON.stringify(rows[r]));
+                console.log(JSON.stringify(rows[r].mb.products[0].name));
+                for(let i = 0; i < rows[r].mb.products.length; i++){
+                    // rows[r].mb.products[i] = 
+                      this.updateCodeProduct(rows[r].mb.products[i], (product) => {
+                        rows[r].mb.products[i] = product;  
+                        // console.log("Product updated: " + JSON.stringify(product));
+                      });
+                }
+                console.log('id: ' + rows[r].id);
+                // bucket.replace(rows[r].id, rows[r].mb);
             }
         });
     }

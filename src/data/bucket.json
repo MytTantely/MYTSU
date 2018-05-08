@@ -1,0 +1,316 @@
+[
+  {
+    "id": "myt#store::000000001",
+    "mb": {
+      "GST_included": true,
+      "address": [
+        "121, 555 - 11 Ave SW",
+        "Calgary, AB",
+        "T2R1P6",
+        "Canada"
+      ],
+      "cuisine": "Meditarranean Cuisine",
+      "currency": "CAD",
+      "email": "shawarma_house@hotmail.com",
+      "geo": {
+        "coordinates": [
+          -114.07322429999999,
+          51.0422965
+        ],
+        "type": "Point"
+      },
+      "name": "Shawarma house",
+      "phones": [
+        "403-242-9800"
+      ],
+      "products": [
+        {
+          "category": [
+            "appetizers",
+            "salads"
+          ],
+          "code": 1,
+          "name": "chicken salad",
+          "price": 7.5
+        },
+        {
+          "category": [
+            "appetizers",
+            "salads"
+          ],
+          "code": 2,
+          "name": "hummus",
+          "price": 5.5
+        },
+        {
+          "category": [
+            "appetizers",
+            "salads"
+          ],
+          "code": 3,
+          "name": "spinach pies",
+          "price": 4.5
+        },
+        {
+          "category": [
+            "sandwiches"
+          ],
+          "code": 4,
+          "name": "shawarma chicken",
+          "price": 5.75,
+          "size": "baby shawarma"
+        },
+        {
+          "category": [
+            "sandwiches"
+          ],
+          "code": 5,
+          "name": "shawarma chicken",
+          "price": 9.5,
+          "size": "regular"
+        },
+        {
+          "category": [
+            "sandwiches"
+          ],
+          "code": 6,
+          "name": "shawarma beef",
+          "price": 5.5,
+          "size": "baby shawarma"
+        },
+        {
+          "category": [
+            "sandwiches"
+          ],
+          "code": 7,
+          "name": "shawarma beef",
+          "price": 9,
+          "size": "regular"
+        },
+        {
+          "category": [
+            "juices"
+          ],
+          "code": 8,
+          "name": "mix cocktail",
+          "price": 3.5,
+          "size": "medium"
+        },
+        {
+          "category": [
+            "juices"
+          ],
+          "code": 9,
+          "name": "mix cocktail",
+          "price": 4.5,
+          "size": "large"
+        },
+        {
+          "category": [
+            "juices"
+          ],
+          "code": 10,
+          "name": "mango juice",
+          "price": 3.5,
+          "size": "medium"
+        },
+        {
+          "category": [
+            "juices"
+          ],
+          "code": 11,
+          "name": "mango juice",
+          "price": 4.5,
+          "size": "large"
+        }
+      ],
+      "subtype": "restaurant",
+      "tags": [
+        "shawarma",
+        "chicken shawarma",
+        "beef shawarma",
+        "falafel",
+        "donair"
+      ],
+      "type": "store"
+    }
+  },
+  {
+    "id": "myt#store::000000002",
+    "mb": {
+      "GST_included": false,
+      "address": [
+        "211A - 12 Ave SW",
+        "Calgary, AB",
+        "T2R0G9",
+        "Canada"
+      ],
+      "cuisine": "breakfast and lunch",
+      "currency": "CAD",
+      "email": null,
+      "geo": {
+        "coordinates": [
+          -114.066493,
+          51.041321
+        ],
+        "type": "Point"
+      },
+      "name": "Blue River Bistro",
+      "phones": [
+        "780-710-2550"
+      ],
+      "products": [
+        {
+          "category": [
+            "tea",
+            "coffee",
+            "drink"
+          ],
+          "code": 101,
+          "name": "drip coffee",
+          "price": 1.85,
+          "size": "small"
+        },
+        {
+          "category": [
+            "tea",
+            "coffee",
+            "drink"
+          ],
+          "code": 102,
+          "name": "drip coffee",
+          "price": 2,
+          "size": "large"
+        },
+        {
+          "category": [
+            "tea",
+            "coffee",
+            "drink"
+          ],
+          "code": 103,
+          "name": "tea",
+          "price": 2
+        },
+        {
+          "category": [
+            "tea",
+            "coffee",
+            "drink"
+          ],
+          "code": 104,
+          "name": "moca latte",
+          "price": 3.6
+        },
+        {
+          "category": [
+            "tea",
+            "coffee",
+            "drink"
+          ],
+          "code": 105,
+          "name": "chai latte",
+          "price": 3.6
+        }
+      ],
+      "subtype": "restaurant",
+      "tags": [
+        "breakfast",
+        "lunch",
+        "sandwiches",
+        "tea",
+        "coffee"
+      ],
+      "type": "store"
+    }
+  },
+  {
+    "id": "myt#store::000000003",
+    "mb": {
+      "GST_included": false,
+      "address": [
+        "1000 Citadel Meadows NW",
+        "Calgary, AB",
+        "T3P5N5",
+        "Canada"
+      ],
+      "cuisine": "breakfast and lunch",
+      "currency": "CAD",
+      "email": null,
+      "geo": {
+        "coordinates": [
+          -114.186904,
+          51.1471761
+        ],
+        "type": "Point"
+      },
+      "name": "Green River Bistro",
+      "phones": [
+        "780-710-2550"
+      ],
+      "products": [
+        {
+          "category": [
+            "tea",
+            "coffee",
+            "drink"
+          ],
+          "code": 201,
+          "name": "drip coffee",
+          "price": 1.85,
+          "size": "small"
+        },
+        {
+          "category": [
+            "tea",
+            "coffee",
+            "drink"
+          ],
+          "code": 202,
+          "name": "drip coffee",
+          "price": 2,
+          "size": "large"
+        },
+        {
+          "category": [
+            "tea",
+            "coffee",
+            "drink"
+          ],
+          "code": 203,
+          "name": "tea",
+          "price": 2
+        },
+        {
+          "category": [
+            "tea",
+            "coffee",
+            "drink"
+          ],
+          "code": 204,
+          "name": "moca latte",
+          "price": 3.6
+        },
+        {
+          "category": [
+            "tea",
+            "coffee",
+            "drink"
+          ],
+          "code": 204,
+          "name": "chai latte",
+          "price": 3.6
+        }
+      ],
+      "subtype": "fast-food",
+      "tags": [
+        "breakfast",
+        "lunch",
+        "sandwiches",
+        "tea",
+        "coffee"
+      ],
+      "type": "store"
+    }
+  }
+]
