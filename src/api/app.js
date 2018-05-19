@@ -5,6 +5,9 @@ const bodyParser = require('body-parser');
 const CBApi = require('../../src/lib/cbApi');
 const cbApi = new CBApi();
 
+const CBRestAPI = require('./cbRestAPI');
+const cbRestAPI = new CBRestAPI();
+
 // configure app to use bodyParser()
 // this will let us get the data from a POST
 app.use(bodyParser.urlencoded({extended:true}));
@@ -47,10 +50,10 @@ app.use('/api/v1', router);
 router.route('/search/:name')
 // Search by name around an address //FIXME simple view or Full Text Search
     .get( (req, res) => {
-        let results = cbApi.searchByName(req.params.name, (err, results) => {
+        let result = cbRestAPI.search(req.params.name, results => {
             res.json(results);
-        } );
-        
+        });        
+
     });
 // Search by name without an address
 
